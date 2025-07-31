@@ -43,7 +43,7 @@ const OnboardingModal = () => {
             <h2>Tell us about you</h2>
             <label>Name</label>
             <input
-              placeholder="e.g. Charlotte"
+              placeholder="e.g. Mark Corrigan"
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
             />
@@ -59,19 +59,19 @@ const OnboardingModal = () => {
         {step === 2 && (
           <>
             <h2>What does your product do?</h2>
-            <label>Product Description</label>
+            <label>Product description</label>
             <textarea
               placeholder="e.g. We help users track cycling performance..."
               value={formData.product}
               onChange={(e) => handleChange('product', e.target.value)}
             />
-            <label>Activation Action 1</label>
+            <label>Activation action 1</label>
             <input
               placeholder="e.g. Complete first ride"
               value={formData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
-            <label>Activation Action 2</label>
+            <label>Activation action 2</label>
             <input
               placeholder="e.g. Upload GPS data"
               value={formData.activations[1]}
@@ -108,7 +108,7 @@ const OnboardingModal = () => {
 
         {step === 4 && (
           <>
-            <h2>Generating your onboarding flow…</h2>
+            <h2>Creating your onboarding flow…</h2>
             <div className="loading">🤖 Assembling tooltips…</div>
           </>
         )}
