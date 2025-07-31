@@ -8,7 +8,7 @@ const OnboardingModal = () => {
     name: '',
     role: '',
     product: '',
-    link: '',
+    appLink: '',
     activations: ['', ''],
     funnelSteps: ['', '', ''],
     frontendTags: ['', '', ''],
@@ -33,7 +33,7 @@ const OnboardingModal = () => {
     <div className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
+          <span className="close" onClick={() => alert('Close clicked')}>&#10005;</span>
           <div className="progress-bar">
             <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
           </div>
@@ -68,9 +68,9 @@ const OnboardingModal = () => {
             />
             <label>Link to app</label>
             <input
-              placeholder="e.g. https://uber.com"
-              value={formData.link}
-              onChange={(e) => handleChange('link', e.target.value)}
+              placeholder="e.g. https://www.uber.com"
+              value={formData.appLink}
+              onChange={(e) => handleChange('appLink', e.target.value)}
             />
             <label>Activation action 1</label>
             <input
@@ -122,7 +122,7 @@ const OnboardingModal = () => {
 
         <div className="modal-footer">
           {step > 1 && <button onClick={back}>Back</button>}
-          {step < 4 && <button onClick={next} className="next-btn">Next</button>}
+          {step < 4 && <button onClick={next}>Next</button>}
         </div>
       </div>
     </div>
