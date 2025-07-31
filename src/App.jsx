@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import OnboardingModal from './components/OnboardingModal';
 
-export default function App() {
+function App() {
   return (
-    <div style={{ fontFamily: 'Roboto, sans-serif', padding: '2rem' }}>
-      <h1>Welcome to the AI Onboarding Tool</h1>
-      <p>This is your live React app. Add your onboarding UI here.</p>
+    <div className="App">
+      <OnboardingModal />
     </div>
-  )
+  );
 }
+
+export default App;
