@@ -34,7 +34,7 @@ const OnboardingModal = () => {
         <div className="modal-header">
           <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
           <div className="progress-bar">
-            <div className="progress" style={{ width: ${(step / 4) * 100}% }}></div>
+            <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
           </div>
         </div>
 
@@ -86,17 +86,17 @@ const OnboardingModal = () => {
             {[0, 1, 2].map((i) => (
               <div className="step-pair" key={i}>
                 <div>
-                  <label>{Step ${i + 1}}</label>
+                  <label>{`Step ${i + 1}`}</label>
                   <input
-                    placeholder={e.g. Open dashboard}
+                    placeholder="e.g. Open dashboard"
                     value={formData.funnelSteps[i]}
                     onChange={(e) => handleArrayChange('funnelSteps', i, e.target.value)}
                   />
                 </div>
                 <div>
-                  <label>{Frontend tag}</label>
+                  <label>Frontend tag</label>
                   <input
-                    placeholder={e.g. .dashboard-card}
+                    placeholder="e.g. .dashboard-card"
                     value={formData.frontendTags[i]}
                     onChange={(e) => handleArrayChange('frontendTags', i, e.target.value)}
                   />
