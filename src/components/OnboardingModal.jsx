@@ -1,125 +1,122 @@
-// src/components/OnboardingModal.jsx
-import React, { useState } from 'react';
-import './OnboardingModal.css';
+/* src/components/OnboardingModal.css */
 
-const OnboardingModal = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: '',
-    role: '',
-    product: '',
-    activations: ['', ''],
-    funnelSteps: ['', '', ''],
-    frontendTags: ['', '', ''],
-  });
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto', sans-serif;
+}
 
-  const next = () => setStep((s) => Math.min(s + 1, 4));
-  const back = () => setStep((s) => Math.max(s - 1, 1));
+.modal-content {
+  background: #fff;
+  padding: 40px 32px;
+  border-radius: 12px;
+  width: 520px;
+  max-width: 90%;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
 
-  const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
 
-  const handleArrayChange = (field, index, value) => {
-    setFormData((prev) => {
-      const updated = [...prev[field]];
-      updated[index] = value;
-      return { ...prev, [field]: updated };
-    });
-  };
+.close {
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+}
 
-  return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-header">
-          <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
-          </div>
-        </div>
+.progress-bar {
+  flex-grow: 1;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  margin-left: 16px;
+  overflow: hidden;
+}
 
-        {step === 1 && (
-          <>
-            <h2>Tell us about you</h2>
-            <label>Name</label>
-            <input
-              placeholder="e.g. Mark Corrigan"
-              value={formData.name}
-              onChange={(e) => handleChange('name', e.target.value)}
-            />
-            <label>Role</label>
-            <input
-              placeholder="e.g. Product Manager"
-              value={formData.role}
-              onChange={(e) => handleChange('role', e.target.value)}
-            />
-          </>
-        )}
+.progress {
+  height: 100%;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
 
-        {step === 2 && (
-          <>
-            <h2>What does your product do?</h2>
-            <label>Product description</label>
-            <textarea
-              placeholder="e.g. We help users track cycling performance..."
-              value={formData.product}
-              onChange={(e) => handleChange('product', e.target.value)}
-            />
-            <label>Activation action 1</label>
-            <input
-              placeholder="e.g. Complete first ride"
-              value={formData.activations[0]}
-              onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
-            />
-            <label>Activation action 2</label>
-            <input
-              placeholder="e.g. Upload GPS data"
-              value={formData.activations[1]}
-              onChange={(e) => handleArrayChange('activations', 1, e.target.value)}
-            />
-          </>
-        )}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #212121;
+}
 
-        {step === 3 && (
-          <>
-            <h2>Steps in the funnel</h2>
-            {[0, 1, 2].map((i) => (
-              <div className="step-pair" key={i}>
-                <div>
-                  <label>{`Step ${i + 1}`}</label>
-                  <input
-                    placeholder={`e.g. Open dashboard`}
-                    value={formData.funnelSteps[i]}
-                    onChange={(e) => handleArrayChange('funnelSteps', i, e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label>{`Frontend tag`}</label>
-                  <input
-                    placeholder={`e.g. .dashboard-card`}
-                    value={formData.frontendTags[i]}
-                    onChange={(e) => handleArrayChange('frontendTags', i, e.target.value)}
-                  />
-                </div>
-              </div>
-            ))}
-          </>
-        )}
+label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #424242;
+  display: block;
+}
 
-        {step === 4 && (
-          <>
-            <h2>Creating your onboarding flow…</h2>
-            <div className="loading">🤖 Assembling tooltips…</div>
-          </>
-        )}
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  background: #fff;
+}
 
-        <div className="modal-footer">
-          {step > 1 && <button onClick={back}>Back</button>}
-          {step < 4 && <button onClick={next}>Next</button>}
-        </div>
-      </div>
-    </div>
-  );
-};
+textarea {
+  resize: vertical;
+  min-height: 96px;
+}
 
-export default OnboardingModal;
+.step-pair {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.step-pair > div {
+  flex: 1;
+}
+
+.modal-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+.loading {
+  font-size: 14px;
+  font-style: italic;
+  color: #616161;
+}
