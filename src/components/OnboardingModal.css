@@ -1,3 +1,5 @@
+/* src/components/OnboardingModal.css */
+
 .modal {
   position: fixed;
   top: 0;
@@ -9,17 +11,17 @@
   justify-content: center;
   align-items: center;
   font-family: Roboto, sans-serif;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .modal-content {
+  position: relative;
   background: white;
   padding: 2rem;
   border-radius: 8px;
   width: 450px;
   max-width: 90%;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  position: relative;
   box-sizing: border-box;
 }
 
@@ -27,15 +29,9 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  font-size: 1.4rem;
-  color: #444;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: color 0.2s ease;
-  z-index: 1000;
-}
-
-.close:hover {
-  color: black;
+  z-index: 10;
 }
 
 .progress-bar {
@@ -43,7 +39,8 @@
   height: 6px;
   background: #eee;
   border-radius: 3px;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
   overflow: hidden;
 }
 
@@ -65,7 +62,8 @@ label {
   margin-bottom: 0.2rem;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 0.6rem;
   font-size: 0.9rem;
@@ -93,8 +91,7 @@ textarea {
 .modal-footer {
   margin-top: 2rem;
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: space-between;
 }
 
 button {
@@ -104,4 +101,8 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.next-btn {
+  margin-left: auto;
 }
