@@ -29,14 +29,14 @@ const OnboardingModal = () => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-header">
-          <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
-          </div>
-        </div>
+<div className="modal-header">
+  <div className="close-wrapper">
+    <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
+  </div>
+  <div className="progress-bar">
+    <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
+  </div>
+</div>
 
         {step === 1 && (
           <>
