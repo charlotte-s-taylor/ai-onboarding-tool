@@ -1,4 +1,3 @@
-// src/components/OnboardingModal.jsx
 import React, { useState } from 'react';
 import './OnboardingModal.css';
 
@@ -32,11 +31,10 @@ const OnboardingModal = () => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <div className="modal-header">
-          <span className="close" onClick={() => alert('Close clicked')}>&#10005;</span>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
-          </div>
+        <span className="close" onClick={() => alert('Close clicked')}>&#10005;</span>
+
+        <div className="progress-bar">
+          <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
         </div>
 
         {step === 1 && (
@@ -122,7 +120,7 @@ const OnboardingModal = () => {
 
         <div className="modal-footer">
           {step > 1 && <button onClick={back}>Back</button>}
-          {step < 4 && <button onClick={next}>Next</button>}
+          {step < 4 && <button onClick={next} className="next-btn">Next</button>}
         </div>
       </div>
     </div>
