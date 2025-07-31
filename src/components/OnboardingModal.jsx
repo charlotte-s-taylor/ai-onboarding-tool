@@ -8,6 +8,7 @@ const OnboardingModal = () => {
     name: '',
     role: '',
     product: '',
+    link: '',
     activations: ['', ''],
     funnelSteps: ['', '', ''],
     frontendTags: ['', '', ''],
@@ -31,9 +32,8 @@ const OnboardingModal = () => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
-
         <div className="modal-header">
+          <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
           <div className="progress-bar">
             <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
           </div>
@@ -65,6 +65,12 @@ const OnboardingModal = () => {
               placeholder="e.g. We help users track cycling performance..."
               value={formData.product}
               onChange={(e) => handleChange('product', e.target.value)}
+            />
+            <label>Link to app</label>
+            <input
+              placeholder="e.g. https://uber.com"
+              value={formData.link}
+              onChange={(e) => handleChange('link', e.target.value)}
             />
             <label>Activation action 1</label>
             <input
@@ -116,7 +122,7 @@ const OnboardingModal = () => {
 
         <div className="modal-footer">
           {step > 1 && <button onClick={back}>Back</button>}
-          {step < 4 && <button onClick={next}>Next</button>}
+          {step < 4 && <button onClick={next} className="next-btn">Next</button>}
         </div>
       </div>
     </div>
