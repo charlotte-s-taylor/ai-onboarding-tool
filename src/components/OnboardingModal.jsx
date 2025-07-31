@@ -31,11 +31,9 @@ const OnboardingModal = () => {
   return (
     <div className="modal">
       <div className="modal-content">
+        <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
 
         <div className="modal-header">
-          <div className="close-wrapper">
-            <span className="close" onClick={() => alert('Close clicked')}>&times;</span>
-          </div>
           <div className="progress-bar">
             <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
           </div>
