@@ -41,13 +41,15 @@ const OnboardingModal = () => {
         {step === 1 && (
           <>
             <h2>Tell us about you</h2>
+            <label>Name</label>
             <input
-              placeholder="Name"
+              placeholder="e.g. Charlotte"
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
             />
+            <label>Role</label>
             <input
-              placeholder="Role"
+              placeholder="e.g. Product Manager"
               value={formData.role}
               onChange={(e) => handleChange('role', e.target.value)}
             />
@@ -57,18 +59,21 @@ const OnboardingModal = () => {
         {step === 2 && (
           <>
             <h2>What does your product do?</h2>
+            <label>Product Description</label>
             <textarea
-              placeholder="Brief description of your product"
+              placeholder="e.g. We help users track cycling performance..."
               value={formData.product}
               onChange={(e) => handleChange('product', e.target.value)}
             />
+            <label>Activation Action 1</label>
             <input
-              placeholder="Activation Action 1"
+              placeholder="e.g. Complete first ride"
               value={formData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
+            <label>Activation Action 2</label>
             <input
-              placeholder="Activation Action 2 (optional)"
+              placeholder="e.g. Upload GPS data"
               value={formData.activations[1]}
               onChange={(e) => handleArrayChange('activations', 1, e.target.value)}
             />
@@ -80,16 +85,22 @@ const OnboardingModal = () => {
             <h2>Steps in the funnel</h2>
             {[0, 1, 2].map((i) => (
               <div className="step-pair" key={i}>
-                <input
-                  placeholder={`Step ${i + 1}`}
-                  value={formData.funnelSteps[i]}
-                  onChange={(e) => handleArrayChange('funnelSteps', i, e.target.value)}
-                />
-                <input
-                  placeholder={`Frontend tag for Step ${i + 1}`}
-                  value={formData.frontendTags[i]}
-                  onChange={(e) => handleArrayChange('frontendTags', i, e.target.value)}
-                />
+                <div>
+                  <label>{`Step ${i + 1}`}</label>
+                  <input
+                    placeholder={`e.g. Open dashboard`}
+                    value={formData.funnelSteps[i]}
+                    onChange={(e) => handleArrayChange('funnelSteps', i, e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label>{`Frontend tag`}</label>
+                  <input
+                    placeholder={`e.g. .dashboard-card`}
+                    value={formData.frontendTags[i]}
+                    onChange={(e) => handleArrayChange('frontendTags', i, e.target.value)}
+                  />
+                </div>
               </div>
             ))}
           </>
