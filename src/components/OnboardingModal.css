@@ -14,30 +14,26 @@
 }
 
 .modal-content {
+  position: relative;
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  width: 480px;
+  width: 450px;
   max-width: 90%;
-  min-height: 420px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-}
-
-.modal-header {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.close-wrapper {
-  position: absolute;
-  top: -10px;
-  right: -10px;
 }
 
 .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 10;
+}
+
+.modal-header {
+  margin-bottom: 1rem;
 }
 
 .progress-bar {
@@ -45,7 +41,6 @@
   height: 6px;
   background: #eee;
   border-radius: 3px;
-  margin-top: 1.5rem;
   overflow: hidden;
 }
 
@@ -64,16 +59,16 @@ label {
   display: block;
   font-size: 0.85rem;
   margin-top: 1rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.2rem;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 0.6rem;
   font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 textarea {
@@ -83,12 +78,13 @@ textarea {
 
 .step-pair {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   margin-top: 1rem;
 }
 
-.step-pair > div {
-  flex: 1;
+.step-pair input {
+  width: 100%;
 }
 
 .modal-footer {
