@@ -1,3 +1,5 @@
+/* src/components/OnboardingModal.css */
+
 .modal {
   position: fixed;
   top: 0;
@@ -12,27 +14,30 @@
 }
 
 .modal-content {
-  position: relative;
   background: white;
   padding: 2rem;
   border-radius: 8px;
   width: 450px;
   max-width: 90%;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box; /* Ensures padding is respected inside width */
+  box-sizing: border-box;
+}
+
+.modal-header {
+  position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
+  top: -12px;
+  right: -12px;
+  font-size: 1.6rem;
+  background: white;
+  border-radius: 50%;
+  padding: 0.1rem 0.4rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  z-index: 10;
-}
-
-.modal-header {
-  margin-bottom: 1.5rem;
 }
 
 .progress-bar {
@@ -40,6 +45,7 @@
   height: 6px;
   background: #eee;
   border-radius: 3px;
+  margin-top: 2rem;
   overflow: hidden;
 }
 
@@ -61,8 +67,7 @@ label {
   margin-bottom: 0.2rem;
 }
 
-input,
-textarea {
+input, textarea {
   width: 100%;
   padding: 0.6rem;
   font-size: 0.9rem;
@@ -100,4 +105,8 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.next-btn {
+  margin-left: auto;
 }
