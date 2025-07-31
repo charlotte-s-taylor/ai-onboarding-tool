@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './OnboardingModal.css';
 
-const OnboardingModal = () => {
+const OnboardingModal = ({ onComplete }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -72,7 +72,7 @@ const OnboardingModal = () => {
             />
             <label>Activation action 1</label>
             <input
-              placeholder="e.g. Select pickup location and drop-off"
+              placeholder="e.g. Select pick up location and drop off"
               value={formData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
@@ -115,12 +115,26 @@ const OnboardingModal = () => {
           <>
             <h2>Creating your onboarding flow…</h2>
             <div className="loading">🤖 Assembling tooltips…</div>
+            <button
+              className="next-btn"
+              onClick={() => {
+                onComplete(formData);
+                window.location.href = '/demo';
+              }}
+              style={{ marginTop: '1rem' }}
+            >
+              View Demo →
+            </button>
           </>
         )}
 
         <div className="modal-footer">
           {step > 1 && <button onClick={back}>Back</button>}
-          {step < 4 && <button onClick={next} className="next-btn">Next</button>}
+          {step < 4 && (
+            <button onClick={next} className="next-btn" style={{ marginLeft: 'auto' }}>
+              Next
+            </button>
+          )}
         </div>
       </div>
     </div>
