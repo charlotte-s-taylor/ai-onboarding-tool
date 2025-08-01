@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './OnboardingModal.css';
 
-const OnboardingModal = ({ onComplete }) => {
+const OnboardingModal = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -60,7 +60,7 @@ const OnboardingModal = ({ onComplete }) => {
             <h2>What does your product do?</h2>
             <label>Product description</label>
             <textarea
-              placeholder="e.g. We get you from a to b, pronto..."
+              placeholder="e.g. We get you from A to B, pronto..."
               value={formData.product}
               onChange={(e) => handleChange('product', e.target.value)}
             />
@@ -72,7 +72,7 @@ const OnboardingModal = ({ onComplete }) => {
             />
             <label>Activation action 1</label>
             <input
-              placeholder="e.g. Select pick up location and drop off"
+              placeholder="e.g. Select pick-up and drop-off"
               value={formData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
@@ -114,19 +114,22 @@ const OnboardingModal = ({ onComplete }) => {
         {step === 4 && (
           <>
             <h2>Creating your onboarding flow…</h2>
-            <div className="loading">🤖 Assembling tooltips…</div>
-            <button className="next-btn" onClick={() => onComplete(formData)}>View Demo</button>
+            <div className="loading">
+              🤖 Assembling tooltips…<br />
+              <em>You’ll be redirected to the demo once it's ready.</em>
+            </div>
           </>
         )}
 
-        <div className="modal-footer">
-          {step > 1 && <button onClick={back}>Back</button>}
-          {step < 4 && <button onClick={next} className="next-btn">Next</button>}
-        </div>
+        {step < 4 && (
+          <div className="modal-footer">
+            {step > 1 && <button onClick={back}>Back</button>}
+            <button onClick={next} className="next-btn">Next</button>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default OnboardingModal;
-
