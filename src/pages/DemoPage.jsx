@@ -1,36 +1,32 @@
-// src/pages/DemoPage.jsx
 import React from 'react';
 import './DemoPage.css';
-import uberImage from '../assets/uber-dashboard.png'; // Ensure this image exists in your repo
+import uberDashboard from '../assets/uber-dashboard.png'; // Make sure this path matches your file structure
 
 const DemoPage = ({ formData }) => {
-  if (!formData) {
-    return (
-      <div className="demo-container">
-        <p>No data passed. Please complete the onboarding first.</p>
-      </div>
-    );
-  }
+  if (!formData) return <p>No data passed. Go back and complete onboarding.</p>;
 
   return (
     <div className="demo-container">
       <div className="navbar">🚗 {formData.product || 'Demo App'}</div>
 
-      <div className="main-content">
-        <img src={uberImage} alt="Uber dashboard mockup" className="demo-image" />
+      <div className="dashboard">
+        <img src={uberDashboard} alt="Uber Dashboard" className="dashboard-image" />
 
+        {/* Overlay tooltips */}
         <div
-          className="tooltip"
-          style={{ top: '120px', left: '60px' }}
+          className="tooltip-box"
+          style={{ top: '140px', left: '80px' }}
+          data-tooltip={`Step 1: ${formData.funnelSteps[0] || 'Open dashboard'}`}
         >
-          <strong>Step 1:</strong> {formData.funnelSteps[0] || 'Enter pickup/dropoff'}
+          {formData.activations[0] || 'Pick-up location'}
         </div>
 
         <div
-          className="tooltip"
-          style={{ top: '240px', left: '220px' }}
+          className="tooltip-box"
+          style={{ top: '200px', left: '80px' }}
+          data-tooltip={`Step 2: ${formData.funnelSteps[1] || 'See pricing'}`}
         >
-          <strong>Step 2:</strong> {formData.funnelSteps[1] || 'Select ride type'}
+          {formData.activations[1] || 'See prices'}
         </div>
       </div>
     </div>
