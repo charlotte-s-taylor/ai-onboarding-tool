@@ -9,22 +9,22 @@ const DemoPage = ({ formData }) => {
     <div className="demo-container">
       <div className="navbar">🚗 {formData.product || 'Demo App'}</div>
 
-      {/* Ensure this wrapper is relative */}
       <div className="dashboard-image-wrapper">
         <img src={uberDashboard} alt="Uber Dashboard" className="dashboard-image" />
 
-        {/* Tooltip overlays absolutely positioned within the wrapper */}
+        {/* Tooltip over pick-up/drop-off */}
         <div
           className="tooltip-box"
-          style={{ top: '20%', left: '10%' }}
+          style={{ top: '22%', left: '12%' }}
           data-tooltip={`Step 1: ${formData.funnelSteps[0] || 'Open dashboard'}`}
         >
           {formData.activations[0] || 'Pick-up location'}
         </div>
 
+        {/* Tooltip under See Prices button */}
         <div
           className="tooltip-box"
-          style={{ top: '40%', left: '10%' }}
+          style={{ top: '47%', left: '12%' }}
           data-tooltip={`Step 2: ${formData.funnelSteps[1] || 'See pricing'}`}
         >
           {formData.activations[1] || 'See prices'}
