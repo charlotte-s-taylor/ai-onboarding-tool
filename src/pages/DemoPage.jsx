@@ -1,6 +1,6 @@
 import React from 'react';
 import './DemoPage.css';
-import dashboardImg from '../assets/uber-dashboard.png'; // make sure this exists
+const dashboardImg = "https://i.imgur.com/N8Q0ncn.png"; // Example Uber-like UI screenshot
 
 const DemoPage = ({ formData }) => {
   if (!formData) return <p>No data passed. Go back and complete onboarding.</p>;
