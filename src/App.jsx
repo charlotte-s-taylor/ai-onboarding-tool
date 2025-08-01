@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import OnboardingModal from './components/OnboardingModal';
-import DemoPage from './DemoPage';
+import DemoPage from './pages/DemoPage';
 
 function App() {
   return (
