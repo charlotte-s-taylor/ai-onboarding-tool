@@ -1,7 +1,6 @@
 import React from 'react';
 import './DemoPage.css';
-
-const dashboardImg = "https://i.imgur.com/N8Q0ncn.png"; // Placeholder Uber-like screenshot
+const dashboardImg = "https://i.imgur.com/N8Q0ncn.png"; // placeholder Uber-style image
 
 const DemoPage = ({ formData }) => {
   if (!formData) return <p>No data passed. Go back and complete onboarding.</p>;
