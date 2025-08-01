@@ -1,9 +1,10 @@
+// src/components/OnboardingModal.jsx
 import React, { useState } from 'react';
 import './OnboardingModal.css';
 
-const OnboardingModal = () => {
+const OnboardingModal = ({ onComplete, setFormData }) => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [localData, setLocalData] = useState({
     name: '',
     role: '',
     product: '',
@@ -13,25 +14,32 @@ const OnboardingModal = () => {
     frontendTags: ['', '', ''],
   });
 
-  const next = () => setStep((s) => Math.min(s + 1, 4));
-  const back = () => setStep((s) => Math.max(s - 1, 1));
+  const next = () => {
+    if (step < 4) setStep(step + 1);
+    else {
+      setFormData(localData);
+      onComplete();
+    }
+  };
+
+  const back = () => setStep(step - 1);
 
   const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setLocalData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleArrayChange = (field, index, value) => {
-    setFormData((prev) => {
-      const updated = [...prev[field]];
-      updated[index] = value;
-      return { ...prev, [field]: updated };
-    });
+    const updated = [...localData[field]];
+    updated[index] = value;
+    setLocalData((prev) => ({ ...prev, [field]: updated }));
   };
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={() => alert('Close clicked')}>&#10005;</span>
+        <span className="close" onClick={() => alert('Close clicked')}>
+          &#10005;
+        </span>
 
         <div className="progress-bar">
           <div className="progress" style={{ width: `${(step / 4) * 100}%` }}></div>
@@ -43,13 +51,13 @@ const OnboardingModal = () => {
             <label>Name</label>
             <input
               placeholder="e.g. Mark Corrigan"
-              value={formData.name}
+              value={localData.name}
               onChange={(e) => handleChange('name', e.target.value)}
             />
             <label>Role</label>
             <input
               placeholder="e.g. Product Manager"
-              value={formData.role}
+              value={localData.role}
               onChange={(e) => handleChange('role', e.target.value)}
             />
           </>
@@ -60,26 +68,26 @@ const OnboardingModal = () => {
             <h2>What does your product do?</h2>
             <label>Product description</label>
             <textarea
-              placeholder="e.g. We get you from A to B, pronto..."
-              value={formData.product}
+              placeholder="e.g. We get you from a to b, pronto..."
+              value={localData.product}
               onChange={(e) => handleChange('product', e.target.value)}
             />
             <label>Link to app</label>
             <input
               placeholder="e.g. https://www.uber.com"
-              value={formData.appLink}
+              value={localData.appLink}
               onChange={(e) => handleChange('appLink', e.target.value)}
             />
             <label>Activation action 1</label>
             <input
-              placeholder="e.g. Select pick-up and drop-off"
-              value={formData.activations[0]}
+              placeholder="e.g. Select pick up location and drop off"
+              value={localData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
             <label>Activation action 2</label>
             <input
               placeholder="e.g. See prices"
-              value={formData.activations[1]}
+              value={localData.activations[1]}
               onChange={(e) => handleArrayChange('activations', 1, e.target.value)}
             />
           </>
@@ -94,7 +102,7 @@ const OnboardingModal = () => {
                   <label>{`Step ${i + 1}`}</label>
                   <input
                     placeholder="e.g. Open dashboard"
-                    value={formData.funnelSteps[i]}
+                    value={localData.funnelSteps[i]}
                     onChange={(e) => handleArrayChange('funnelSteps', i, e.target.value)}
                   />
                 </div>
@@ -102,7 +110,7 @@ const OnboardingModal = () => {
                   <label>Frontend tag</label>
                   <input
                     placeholder="e.g. .dashboard-card"
-                    value={formData.frontendTags[i]}
+                    value={localData.frontendTags[i]}
                     onChange={(e) => handleArrayChange('frontendTags', i, e.target.value)}
                   />
                 </div>
@@ -114,19 +122,15 @@ const OnboardingModal = () => {
         {step === 4 && (
           <>
             <h2>Creating your onboarding flow…</h2>
-            <div className="loading">
-              
-              <em>🤖 You’ll be redirected to the demo once it's ready.</em>
-            </div>
+            <img src="/assets/uber-dashboard.png" alt="Loading preview" className="demo-preview" />
+            <p className="loading-note">You'll be redirected shortly…</p>
           </>
         )}
 
-        {step < 4 && (
-          <div className="modal-footer">
-            {step > 1 && <button onClick={back}>Back</button>}
-            <button onClick={next} className="next-btn">Next</button>
-          </div>
-        )}
+        <div className="modal-footer">
+          {step > 1 && <button onClick={back}>Back</button>}
+          <button onClick={next}>{step < 4 ? 'Next' : 'View demo'}</button>
+        </div>
       </div>
     </div>
   );
