@@ -37,4 +37,20 @@ function App() {
     <div>
       <Modal
         step1={step1} setStep1={setStep1}
-        step2={step2} setStep2
+        step2={step2} setStep2={setStep2}
+        step3={step3} setStep3={setStep3}
+        step4={step4} setStep4={setStep4}
+        step5={step5} setStep5={setStep5}
+        tag1={tag1} setTag1={setTag1}
+        tag2={tag2} setTag2={setTag2}
+        tag3={tag3} setTag3={setTag3}
+        tag4={tag4} setTag4={setTag4}
+        tag5={tag5} setTag5={setTag5}
+        handleSubmit={handleSubmit}
+        flowOutput={flowOutput}
+      />
+    </div>
+  );
+}
+
+export default App;
