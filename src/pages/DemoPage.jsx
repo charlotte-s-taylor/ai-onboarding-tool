@@ -1,12 +1,17 @@
 import React from 'react';
 import './DemoPage.css';
 
-const DemoPage = ({ formData }) => {
-  if (!formData) return <p>No data passed. Go back and complete onboarding.</p>;
+const DemoPage = () => {
+  // Temporary hardcoded fallback values for demo
+  const formData = {
+    product: "Uber Clone",
+    activations: ["Select pickup and dropoff", "See prices"],
+    funnelSteps: ["Open dashboard", "Select car type"],
+  };
 
   return (
     <div className="demo-container">
-      <div className="navbar">🚗 {formData.product || 'Demo App'}</div>
+      <div className="navbar">🚗 {formData.product}</div>
 
       <div className="main-content">
         <div
