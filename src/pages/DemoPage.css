@@ -1,61 +1,33 @@
-.demo-container {
-  font-family: Roboto, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.navbar {
-  background: black;
-  color: white;
-  padding: 1rem;
-  font-size: 1.2rem;
-}
-
-/* Image wrapper: crucial for relative positioning */
-.dashboard-image-wrapper {
-  position: relative;
-  max-width: 1000px;
-  margin: 2rem auto;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.dashboard-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Tooltip boxes overlayed on top of image */
-.tooltip-box {
+.tooltip {
   position: absolute;
-  padding: 6px 12px;
-  background: black;
-  color: white;
-  font-size: 0.85rem;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 10;
-  white-space: nowrap;
-}
-
-/* Hover tooltip effect using pseudo-element */
-.tooltip-box[data-tooltip]:hover::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
+  background-color: #323232;
   color: #fff;
-  padding: 6px 10px;
+  padding: 8px 12px;
   border-radius: 4px;
-  white-space: nowrap;
-  font-size: 0.75rem;
-  opacity: 1;
-  pointer-events: none;
-  z-index: 999;
+  font-size: 14px;
+  max-width: 200px;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0.95;
+}
+
+.tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+
+.tooltip-top .tooltip-arrow {
+  bottom: -6px;
+  left: 20px;
+  border-width: 6px 6px 0 6px;
+  border-color: #323232 transparent transparent transparent;
+}
+
+.tooltip-bottom .tooltip-arrow {
+  top: -6px;
+  left: 20px;
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #323232 transparent;
 }
