@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OnboardingModal.css';
 
-const OnboardingModal = () => {
+const OnboardingModal = ({ onComplete }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -27,6 +27,14 @@ const OnboardingModal = () => {
       return { ...prev, [field]: updated };
     });
   };
+
+  useEffect(() => {
+    if (step === 4) {
+      setTimeout(() => {
+        onComplete(formData);
+      }, 2000);
+    }
+  }, [step]);
 
   return (
     <div className="modal">
@@ -60,7 +68,7 @@ const OnboardingModal = () => {
             <h2>What does your product do?</h2>
             <label>Product description</label>
             <textarea
-              placeholder="e.g. We get you from A to B, pronto…"
+              placeholder="e.g. We get you from A to B, pronto..."
               value={formData.product}
               onChange={(e) => handleChange('product', e.target.value)}
             />
@@ -72,13 +80,13 @@ const OnboardingModal = () => {
             />
             <label>Activation action 1</label>
             <input
-              placeholder="e.g. Select pickup and dropoff"
+              placeholder="e.g. Select pick-up and drop-off"
               value={formData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
             <label>Activation action 2</label>
             <input
-              placeholder="e.g. See prices"
+              placeholder="e.g. View prices"
               value={formData.activations[1]}
               onChange={(e) => handleArrayChange('activations', 1, e.target.value)}
             />
