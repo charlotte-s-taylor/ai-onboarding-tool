@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from 'react';
 import OnboardingModal from './components/OnboardingModal';
 import DemoPage from './pages/DemoPage';
