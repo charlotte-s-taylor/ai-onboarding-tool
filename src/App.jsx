@@ -1,7 +1,7 @@
+import './App.css';
 import React, { useState } from 'react';
 import OnboardingModal from './components/OnboardingModal';
 import DemoPage from './pages/DemoPage';
-import './App.css';
 
 function App() {
   const [formData, setFormData] = useState(null);
