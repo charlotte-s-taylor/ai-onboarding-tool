@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './OnboardingModal.css';
 
 const OnboardingModal = ({ onComplete }) => {
@@ -27,14 +27,6 @@ const OnboardingModal = ({ onComplete }) => {
       return { ...prev, [field]: updated };
     });
   };
-
-  useEffect(() => {
-    if (step === 4) {
-      setTimeout(() => {
-        onComplete(formData);
-      }, 2000);
-    }
-  }, [step]);
 
   return (
     <div className="modal">
@@ -68,7 +60,7 @@ const OnboardingModal = ({ onComplete }) => {
             <h2>What does your product do?</h2>
             <label>Product description</label>
             <textarea
-              placeholder="e.g. We get you from A to B, pronto..."
+              placeholder="e.g. We get you from a to b, pronto..."
               value={formData.product}
               onChange={(e) => handleChange('product', e.target.value)}
             />
@@ -80,13 +72,13 @@ const OnboardingModal = ({ onComplete }) => {
             />
             <label>Activation action 1</label>
             <input
-              placeholder="e.g. Select pick-up and drop-off"
+              placeholder="e.g. Select pick up location and drop off"
               value={formData.activations[0]}
               onChange={(e) => handleArrayChange('activations', 0, e.target.value)}
             />
             <label>Activation action 2</label>
             <input
-              placeholder="e.g. View prices"
+              placeholder="e.g. See prices"
               value={formData.activations[1]}
               onChange={(e) => handleArrayChange('activations', 1, e.target.value)}
             />
@@ -123,6 +115,7 @@ const OnboardingModal = ({ onComplete }) => {
           <>
             <h2>Creating your onboarding flow…</h2>
             <div className="loading">🤖 Assembling tooltips…</div>
+            <button className="next-btn" onClick={() => onComplete(formData)}>View Demo</button>
           </>
         )}
 
@@ -136,3 +129,4 @@ const OnboardingModal = ({ onComplete }) => {
 };
 
 export default OnboardingModal;
+
