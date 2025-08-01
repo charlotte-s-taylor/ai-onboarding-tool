@@ -1,0 +1,10 @@
+.App {
+  font-family: Roboto, sans-serif;
+  min-height: 100vh;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
