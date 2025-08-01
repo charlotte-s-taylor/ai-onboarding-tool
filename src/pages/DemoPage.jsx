@@ -1,25 +1,29 @@
 // src/pages/DemoPage.jsx
 import React from 'react';
 import './DemoPage.css';
-import uberImg from '../assets/uber-dashboard.png';
+import uberImage from '../assets/uber-dashboard.png';
 
 const DemoPage = ({ formData }) => {
   if (!formData) return <p>No data passed. Go back and complete onboarding.</p>;
 
   return (
-    <div className="demo-container" style={{ position: 'relative' }}>
-      <img src={uberImg} alt="Uber dashboard" className="uber-screenshot" />
+    <div className="demo-container">
+      <div className="navbar">🚗 {formData.product || 'Demo App'}</div>
 
-      {/* Tooltip 1 – Pick-up */}
-      <div className="tooltip tooltip-top" style={{ top: '200px', left: '140px' }}>
-        <div className="tooltip-arrow"></div>
-        Step 1: {formData.funnelSteps[0] || 'Select pickup and dropoff'}
-      </div>
+      <div className="main-content">
+        <div className="mockup-image">
+          <img src={uberImage} alt="Uber App Mockup" />
 
-      {/* Tooltip 2 – See prices */}
-      <div className="tooltip tooltip-bottom" style={{ top: '350px', left: '150px' }}>
-        <div className="tooltip-arrow"></div>
-        Step 2: {formData.funnelSteps[1] || 'See prices'}
+          {/* TOOLTIP: Pickup Location */}
+          <div className="tooltip tooltip-pickup">
+            Step 1: {formData.funnelSteps[0] || 'Select pickup & drop-off'}
+          </div>
+
+          {/* TOOLTIP: See Prices */}
+          <div className="tooltip tooltip-price">
+            Step 2: {formData.funnelSteps[1] || 'See ride prices'}
+          </div>
+        </div>
       </div>
     </div>
   );
