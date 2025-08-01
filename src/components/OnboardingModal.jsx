@@ -115,8 +115,8 @@ const OnboardingModal = () => {
           <>
             <h2>Creating your onboarding flow…</h2>
             <div className="loading">
-              🤖 Assembling tooltips…<br />
-              <em>You’ll be redirected to the demo once it's ready.</em>
+              
+              <em>🤖 You’ll be redirected to the demo once it's ready.</em>
             </div>
           </>
         )}
