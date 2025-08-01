@@ -84,7 +84,7 @@ textarea {
 .modal-footer {
   margin-top: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* instead of space-between */
 }
 
 button {
