@@ -1,16 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// src/App.jsx
+import React, { useState } from 'react';
 import OnboardingModal from './components/OnboardingModal';
 import DemoPage from './pages/DemoPage';
 
 function App() {
+  const [formData, setFormData] = useState(null);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<OnboardingModal />} />
-        <Route path="/demo" element={<DemoPage />} />
-      </Routes>
-    </Router>
+    <div>
+      {!formData ? (
+        <OnboardingModal onComplete={setFormData} />
+      ) : (
+        <DemoPage formData={formData} />
+      )}
+    </div>
   );
 }
 
