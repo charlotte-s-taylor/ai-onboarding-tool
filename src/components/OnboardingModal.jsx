@@ -1,51 +1,132 @@
-import React from 'react';
+/* App.css */
 
-function Modal({
-  step1, setStep1,
-  step2, setStep2,
-  step3, setStep3,
-  step4, setStep4,
-  step5, setStep5,
-  tag1, setTag1,
-  tag2, setTag2,
-  tag3, setTag3,
-  tag4, setTag4,
-  tag5, setTag5,
-  handleSubmit,
-  flowOutput,
-}) {
-  return (
-    <div className="modal">
-      <input value={step1} onChange={(e) => setStep1(e.target.value)} placeholder="Step 1" />
-      <input value={tag1} onChange={(e) => setTag1(e.target.value)} placeholder="Tag 1" />
-
-      <input value={step2} onChange={(e) => setStep2(e.target.value)} placeholder="Step 2" />
-      <input value={tag2} onChange={(e) => setTag2(e.target.value)} placeholder="Tag 2" />
-
-      <input value={step3} onChange={(e) => setStep3(e.target.value)} placeholder="Step 3" />
-      <input value={tag3} onChange={(e) => setTag3(e.target.value)} placeholder="Tag 3" />
-
-      <input value={step4} onChange={(e) => setStep4(e.target.value)} placeholder="Step 4" />
-      <input value={tag4} onChange={(e) => setTag4(e.target.value)} placeholder="Tag 4" />
-
-      <input value={step5} onChange={(e) => setStep5(e.target.value)} placeholder="Step 5" />
-      <input value={tag5} onChange={(e) => setTag5(e.target.value)} placeholder="Tag 5" />
-
-      <button onClick={handleSubmit}>Generate Tooltips</button>
-
-      {flowOutput.length > 0 && (
-        <div className="output">
-          <h3>Generated Tooltips:</h3>
-          {flowOutput.map((item, idx) => (
-            <div key={idx}>
-              <strong>{item.step}</strong> ({item.selector})
-              <p>{item.tooltip}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
 }
 
-export default Modal;
+.modal {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin: 0 0 24px 0;
+  color: #444;
+  font-size: 16px;
+}
+
+.progress-bar {
+  width: 120px;
+  height: 6px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #000;
+  transition: width 0.3s ease;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+label span {
+  color: black;
+  margin-left: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.modal-footer button {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-footer button:hover {
+  opacity: 0.9;
+}
+
+.funnel-row {
+  display: flex;
+  gap: 16px;
+}
+
+.funnel-row div {
+  flex: 1;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  text-align: center;
+}
+
+.loading-screen h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.spinner {
+  margin-top: 24px;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid black;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
