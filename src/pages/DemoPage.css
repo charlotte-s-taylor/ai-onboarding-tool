@@ -14,22 +14,22 @@
   font-size: 1.2rem;
 }
 
-.dashboard {
+/* Image wrapper: crucial for relative positioning */
+.dashboard-image-wrapper {
   position: relative;
-  width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .dashboard-image {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;
 }
 
-/* Tooltip overlay */
+/* Tooltip boxes overlayed on top of image */
 .tooltip-box {
   position: absolute;
   padding: 6px 12px;
@@ -39,10 +39,10 @@
   border-radius: 4px;
   cursor: pointer;
   z-index: 10;
-  transition: transform 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Hover tooltip effect using ::after */
+/* Hover tooltip effect using pseudo-element */
 .tooltip-box[data-tooltip]:hover::after {
   content: attr(data-tooltip);
   position: absolute;
