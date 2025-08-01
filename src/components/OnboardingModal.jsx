@@ -1,132 +1,137 @@
-/* App.css */
+// Modal.jsx
+import React, { useState } from 'react';
+import './App.css';
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 0;
-}
+const Modal = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    role: '',
+    feature: '',
+    link: '',
+    activation1: '',
+    activation2: '',
+    funnel1steps: '',
+    funnel1tags: '',
+    funnel2steps: '',
+    funnel2tags: '',
+  });
 
-.modal {
-  width: 100%;
-  max-width: 560px;
-  margin: 40px auto;
-  padding: 32px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => setStep(step - 1);
+  const reset = () => setStep(1);
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-.modal-header h2 {
-  font-size: 24px;
-  margin: 0;
-  font-weight: 600;
-}
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <>
+            <div className="modal-header">
+              <h2>Your details</h2>
+              <div className="progress-bar"><div className="progress" style={{ width: '33%' }} /></div>
+            </div>
+            <p className="subtitle">Tell us about you.</p>
+            <label>Name<span>*</span></label>
+            <input name="name" placeholder="Add name" onChange={handleChange} />
+            <label>Company<span>*</span></label>
+            <input name="company" placeholder="Add company" onChange={handleChange} />
+            <label>Role<span>*</span></label>
+            <input name="role" placeholder="Add role" onChange={handleChange} />
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <div className="modal-header">
+              <h2>Your product</h2>
+              <div className="progress-bar"><div className="progress" style={{ width: '66%' }} /></div>
+            </div>
+            <p className="subtitle">Tell us about your product to help us generate your onboarding experience</p>
+            <label>Product feature/name<span>*</span></label>
+            <input name="feature" placeholder="Add name" onChange={handleChange} />
+            <label>Link to your application<span>*</span></label>
+            <input name="link" placeholder="Add link" onChange={handleChange} />
+            <label>Activation step 1<span>*</span></label>
+            <input name="activation1" placeholder="First activation step e.g. create a new project" onChange={handleChange} />
+            <label>Activation step 2</label>
+            <input name="activation2" placeholder="Second activation step e.g. add a colleague" onChange={handleChange} />
+          </>
+        );
+      case 3:
+        return (
+          <>
+            <div className="modal-header">
+              <h2>Your activation funnels</h2>
+              <div className="progress-bar"><div className="progress" style={{ width: '100%' }} /></div>
+            </div>
+            <p className="subtitle">Add steps of your activation funnel to help generate your onboarding experience.</p>
+            <h3>Funnel 1</h3>
+            <div className="funnel-row">
+              <div>
+                <label>Steps in the funnel<span>*</span></label>
+                <input name="funnel1steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
+              </div>
+              <div>
+                <label>Frontend tags<span>*</span></label>
+                <input name="funnel1tags" placeholder="#profile-pic, [data-testid=\"cta-button\"]" onChange={handleChange} />
+              </div>
+            </div>
+            <h3>Funnel 2</h3>
+            <div className="funnel-row">
+              <div>
+                <label>Steps in the funnel<span>*</span></label>
+                <input name="funnel2steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
+              </div>
+              <div>
+                <label>Frontend tags<span>*</span></label>
+                <input name="funnel2tags" placeholder="#profile-pic, [data-testid=\"cta-button\"]" onChange={handleChange} />
+              </div>
+            </div>
+          </>
+        );
+      case 4:
+        return (
+          <div className="loading-screen">
+            <h2>Hold tight!</h2>
+            <p>Generating your onboarding experience...</p>
+            <div className="spinner"></div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
-.subtitle {
-  margin: 0 0 24px 0;
-  color: #444;
-  font-size: 16px;
-}
+  return (
+    <div className="modal">
+      {renderStep()}
+      {step < 4 && (
+        <div className="modal-footer">
+          {step > 1 && <button onClick={prevStep}>Back</button>}
+          {step === 3 && <button onClick={reset}>Cancel</button>}
+          <button
+            onClick={() => {
+              if (step === 3) {
+                fetch("https://hooks.zapier.com/hooks/catch/24042000/u419n2c/", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(formData),
+                });
+              }
+              nextStep();
+            }}
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
-.progress-bar {
-  width: 120px;
-  height: 6px;
-  background: #eee;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  background: #000;
-  transition: width 0.3s ease;
-}
-
-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 20px;
-}
-
-label span {
-  color: black;
-  margin-left: 4px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 32px;
-}
-
-.modal-footer button {
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 500;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.modal-footer button:hover {
-  opacity: 0.9;
-}
-
-.funnel-row {
-  display: flex;
-  gap: 16px;
-}
-
-.funnel-row div {
-  flex: 1;
-}
-
-.loading-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-  text-align: center;
-}
-
-.loading-screen h2 {
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.spinner {
-  margin-top: 24px;
-  width: 40px;
-  height: 40px;
-  border: 4px solid #ccc;
-  border-top: 4px solid black;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+export default Modal;
