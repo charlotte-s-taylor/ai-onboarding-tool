@@ -1,7 +1,7 @@
-s// Modal.jsx
 import React, { useState } from 'react';
+import '../main.css';
 
-const Modal = () => {
+const OnboardingModal = ({ onFinish }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -121,6 +121,7 @@ const Modal = () => {
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify(formData),
                 });
+                onFinish();
               }
               nextStep();
             }}
@@ -133,4 +134,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default OnboardingModal;
