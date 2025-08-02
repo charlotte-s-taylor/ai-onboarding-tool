@@ -89,7 +89,7 @@ const Modal = () => {
               </div>
               <div>
                 <label>Frontend tags<span>*</span></label>
-                <input name="funnel2tags" placeholder="#profile-pic, [data-testid=\"cta-button\"]" onChange={handleChange} />
+                <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
               </div>
             </div>
           </>
