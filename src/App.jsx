@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import OnboardingModal from "./components/OnboardingModal";
 import ExperimentModal from "./components/ExperimentModal";
 import ExperimentCard from "./components/ExperimentCard";
-import Toast from "./components/Toast.jsx";
+import Toast from "./components/Toast";
 import "./main.css";
 
 function App() {
