@@ -1,33 +1,33 @@
-import React from 'react';
+import React, { useState } from "react";
 
 const ExperimentModal = ({ onClose, onCreate }) => {
+  const [form, setForm] = useState({
+    startDate: "",
+    duration: "",
+    goal1: "",
+    goal2: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="modal">
       <div className="modal-header">
         <h2>Your product</h2>
-        <button onClick={onClose}>×</button>
+        <p className="subtitle">
+          Split new users 50/50 experiment vs control to test your onboarding flow.
+        </p>
       </div>
-      <p className="subtitle">Split new users 50/50 experiment vs control to test your onboarding flow.</p>
-
-      <label>
-        Start Date<span>*</span>
-        <input type="date" placeholder="Enter start date" required />
-      </label>
-
-      <label>
-        Duration<span>*</span>
-        <input type="text" placeholder="Select duration" required />
-      </label>
-
-      <label>
-        Activation goal 1<span>*</span>
-        <input type="text" placeholder='e.g. Increase activation of "create a project"' required />
-      </label>
-
-      <label>
-        Activation goal 2
-        <input type="text" placeholder='e.g. Increase activation of "add a colleague"' />
-      </label>
+      <label>Start date<span>*</span></label>
+      <input name="startDate" placeholder="Enter start date" onChange={handleChange} />
+      <label>Duration<span>*</span></label>
+      <input name="duration" placeholder="Select duration" onChange={handleChange} />
+      <label>Activation goal 1<span>*</span></label>
+      <input name="goal1" placeholder='e.g. Increase activation of "create a project"' onChange={handleChange} />
+      <label>Activation goal 2</label>
+      <input name="goal2" placeholder='e.g. Increase activation of "add a colleague"' onChange={handleChange} />
 
       <div className="modal-footer">
         <button onClick={onClose}>Cancel</button>
