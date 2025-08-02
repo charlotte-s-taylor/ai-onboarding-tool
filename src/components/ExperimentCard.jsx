@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-import ExperimentModal from './ExperimentModal';
+import React from "react";
 
-const ExperimentCard = () => {
-  const [showModal, setShowModal] = useState(false);
-
+const ExperimentCard = ({ onOpenModal }) => {
   return (
-    <>
-      <div className="experiment-card" onClick={() => setShowModal(true)}>
-        <h4>Run onboarding experiment</h4>
-        <p>Split new users 50/50 to test your onboarding flow</p>
-      </div>
-      {showModal && <ExperimentModal onClose={() => setShowModal(false)} />}
-    </>
+    <div className="experiment-card">
+      <h2>Run an onboarding experiment</h2>
+      <p>
+        Split users 50/50 to test onboarding variants and check impact on activation.
+      </p>
+      <button onClick={onOpenModal}>Create Experiment</button>
+    </div>
   );
 };
 
