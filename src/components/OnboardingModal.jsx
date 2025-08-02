@@ -1,6 +1,6 @@
 s// Modal.jsx
 import React, { useState } from 'react';
-import './App.css';
+import '../App.css';
 
 const Modal = () => {
   const [step, setStep] = useState(1);
