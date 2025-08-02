@@ -29,28 +29,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {showOnboarding && (
-        <OnboardingModal onFinish={handleFinishOnboarding} />
-      )}
-
-      {!showOnboarding && (
-        <>
-          <ExperimentCard onOpenModal={handleOpenExperimentModal} />
-          {showExperimentModal && (
-            <ExperimentModal
-              onClose={handleCloseExperimentModal}
-              onCreate={handleCreateExperiment}
-            />
-          )}
-        </>
-      )}
-
-      {showToast && (
-        <Toast message="Experiment created – check back tomorrow to see results in dashboard" />
-      )}
-    </div>
-  );
+  <div>
+    <h1>Hello world from App.jsx</h1>
+  </div>
+);
 }
 
 export default App;
