@@ -1,5 +1,3 @@
-/* src/App.css */
-
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
@@ -14,6 +12,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
 .toast {
   position: fixed;
   bottom: 20px;
