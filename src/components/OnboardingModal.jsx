@@ -1,4 +1,4 @@
-// Modal.jsx
+s// Modal.jsx
 import React, { useState } from 'react';
 import './App.css';
 
