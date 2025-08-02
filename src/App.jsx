@@ -4,7 +4,7 @@ import OnboardingModal from "./components/OnboardingModal";
 import ExperimentModal from "./components/ExperimentModal";
 import ExperimentCard from "./components/ExperimentCard";
 import Toast from "./components/Toast";
-import "/src/App.css";
+import "./App.css";
 
 function App() {
   const [showOnboarding, setShowOnboarding] = useState(true);
