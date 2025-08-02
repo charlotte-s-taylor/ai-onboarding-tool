@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ExperimentModal from './ExperimentModal';
-import './ExperimentCard.css';
 
 const ExperimentCard = () => {
   const [showModal, setShowModal] = useState(false);
